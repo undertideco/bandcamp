@@ -1,4 +1,6 @@
 # go-bandcamp
+[![GoDoc](https://godoc.org/github.com/undertideco/go-bandcamp?status.svg)](https://godoc.org/github.com/undertideco/go-bandcamp)
+
 This is a library that can do the following on Bandcamp:
 - Search
 - Lookup Tracks/Albums by URL

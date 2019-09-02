@@ -128,8 +128,8 @@ func (client Client) Lookup(url string) (Media, error) {
 		result.ReleaseDate = releaseDate
 	})
 
-	c.OnHTML(".buyItemPackageTitle", func(e *colly.HTMLElement) {
-		if strings.Contains(strings.ToLower(e.Text), "album") {
+	c.OnHTML(".trackView", func(e *colly.HTMLElement) {
+		if e.Attr("itemtype") == "http://schema.org/MusicAlbum" {
 			result.Type = MediaTypeAlbum
 		}
 	})

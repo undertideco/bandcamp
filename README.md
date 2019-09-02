@@ -6,6 +6,12 @@ This is a library that can do the following on Bandcamp:
 - Lookup Tracks/Albums by URL
 
 ### Usage
+Add it to your Go project
+```shell
+go get github.com/undertideco/bandcamp
+```
+
+#### Code
 ```go
 package main
 

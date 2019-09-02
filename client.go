@@ -106,8 +106,8 @@ func (client Client) Lookup(url string) (Media, error) {
 		fmt.Println("Visiting", r.URL)
 	})
 
-	c.OnHTML(".trackTitle", func(e *colly.HTMLElement) {
-		result.Title = e.Text
+	c.OnHTML(".trackView .trackTitle", func(e *colly.HTMLElement) {
+		result.Title = strings.TrimSpace(e.Text)
 	})
 
 	c.OnHTML(".fromAlbum", func(e *colly.HTMLElement) {

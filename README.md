@@ -1,5 +1,5 @@
-# go-bandcamp
-[![GoDoc](https://godoc.org/github.com/undertideco/go-bandcamp?status.svg)](https://godoc.org/github.com/undertideco/go-bandcamp)
+# bandcamp
+[![GoDoc](https://godoc.org/github.com/undertideco/bandcamp?status.svg)](https://godoc.org/github.com/undertideco/bandcamp)
 
 This is a library that can do the following on Bandcamp:
 - Search
@@ -10,7 +10,7 @@ This is a library that can do the following on Bandcamp:
 package main
 
 import (
-  "github.com/undertideco/go-bandcamp"
+  "github.com/undertideco/bandcamp"
 )
 
 func main() {

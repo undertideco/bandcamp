@@ -1,4 +1,4 @@
-module github.com/undertideco/go-bandcamp
+module github.com/undertideco/bandcamp
 
 go 1.12
 

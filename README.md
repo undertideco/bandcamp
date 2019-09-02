@@ -1,5 +1,5 @@
 # bandcamp
-[![GoDoc](https://godoc.org/github.com/undertideco/bandcamp?status.svg)](https://godoc.org/github.com/undertideco/bandcamp)
+[![Build Status](https://travis-ci.org/undertideco/bandcamp.svg?branch=master)](https://travis-ci.org/undertideco/bandcamp) [![GoDoc](https://godoc.org/github.com/undertideco/bandcamp?status.svg)](https://godoc.org/github.com/undertideco/bandcamp)
 
 This is a library that can do the following on Bandcamp:
 - Search

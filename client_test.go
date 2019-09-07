@@ -26,7 +26,7 @@ var (
 
 func TestSearch(t *testing.T) {
 	c := NewClient()
-	searchData, err := c.Search("chvrches")
+	searchData, err := c.Search("chvrches leave a trace")
 	if err != nil {
 		t.Error(err)
 	}

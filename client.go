@@ -2,6 +2,7 @@ package bandcamp
 
 import (
 	"fmt"
+	"net/url"
 	"regexp"
 	"strings"
 	"time"
@@ -92,7 +93,7 @@ func (client Client) Search(term string) ([]Media, error) {
 		err = e
 	})
 
-	c.Visit(fmt.Sprintf("https://bandcamp.com/search?q=%s", term))
+	c.Visit(fmt.Sprintf("https://bandcamp.com/search?q=%s", url.QueryEscape(term)))
 
 	c.Wait()
 

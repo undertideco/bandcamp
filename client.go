@@ -72,11 +72,19 @@ func (client Client) Search(term string) ([]Media, error) {
 			}
 		}
 		r := Media{
-			Type:        strings.TrimSpace(e.ChildText(".itemtype")),
+			Type:        strings.ToLower(strings.TrimSpace(e.ChildText(".itemtype"))),
 			ArtworkURL:  e.ChildAttr(".artcont img", "src"),
 			Title:       e.ChildText(".heading a"),
 			URL:         e.ChildText(".itemurl a"),
 			ReleaseDate: releaseDate,
+		}
+
+		switch r.Type {
+		case MediaTypeAlbum:
+		case MediaTypeTrack:
+			break
+		default:
+			return
 		}
 
 		if len(albumMatches) > 1 {

@@ -6,19 +6,21 @@ import (
 )
 
 var (
-	expectedAlbum = Media{
+	expectedAlbumReleaseDate = time.Date(2017, time.October, 28, 0, 0, 0, 0, time.UTC)
+	expectedAlbum            = Media{
 		Type:        MediaTypeAlbum,
 		Title:       "Greatest Hits",
 		Artist:      "Coldplay",
-		ReleaseDate: time.Date(2017, time.October, 28, 0, 0, 0, 0, time.UTC),
+		ReleaseDate: &expectedAlbumReleaseDate,
 	}
 
-	expectedTrack = Media{
+	expectedTrackReleaseDate = time.Date(2019, time.November, 1, 0, 0, 0, 0, time.UTC)
+	expectedTrack            = Media{
 		Type:        MediaTypeTrack,
 		Title:       "Infinite",
 		Album:       "MONOCHROME DAYDREAM",
 		Artist:      "BRYCE MILLER",
-		ReleaseDate: time.Date(2019, time.November, 1, 0, 0, 0, 0, time.UTC),
+		ReleaseDate: &expectedTrackReleaseDate,
 	}
 )
 
@@ -48,7 +50,7 @@ func TestLookupAlbum(t *testing.T) {
 	if album.Artist != expectedAlbum.Artist {
 		t.Errorf("Unexpected album artist '%s', expected '%s'", album.Artist, expectedAlbum.Artist)
 	}
-	if album.ReleaseDate != expectedAlbum.ReleaseDate {
+	if *album.ReleaseDate != *expectedAlbum.ReleaseDate {
 		t.Errorf("Unexpected album release date '%s', expected '%s'", album.ReleaseDate, expectedAlbum.ReleaseDate)
 	}
 }
@@ -71,7 +73,7 @@ func TestLookupTrack(t *testing.T) {
 	if track.Album != expectedTrack.Album {
 		t.Errorf("Unexpected track album '%s', expected '%s'", track.Album, expectedTrack.Album)
 	}
-	if track.ReleaseDate != expectedTrack.ReleaseDate {
+	if *track.ReleaseDate != *expectedTrack.ReleaseDate {
 		t.Errorf("Unexpected track release date '%s', expected '%s'", track.ReleaseDate, expectedTrack.ReleaseDate)
 	}
 }

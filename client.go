@@ -59,11 +59,17 @@ func (client Client) Search(term string) ([]Media, error) {
 	})
 
 	c.OnHTML(".searchresult", func(e *colly.HTMLElement) {
-		var releaseDate time.Time
+		var releaseDate *time.Time
 		albumMatches := regexAlbum.FindStringSubmatch(e.ChildText(".subhead"))
 		artistMatches := regexArtist.FindStringSubmatch(e.ChildText(".subhead"))
 		rawDateMatches := regexSearchReleaseDate.FindStringSubmatch(e.ChildText(".released"))
-		releaseDate, err = time.Parse(timeFormatSearch, rawDateMatches[1])
+		if len(rawDateMatches) >= 2 {
+			var rd time.Time
+			rd, err = time.Parse(timeFormatSearch, rawDateMatches[1])
+			if err == nil {
+				releaseDate = &rd
+			}
+		}
 		r := Media{
 			Type:        strings.TrimSpace(e.ChildText(".itemtype")),
 			ArtworkURL:  e.ChildAttr(".artcont img", "src"),
@@ -125,7 +131,9 @@ func (client Client) Lookup(url string) (Media, error) {
 	c.OnHTML("meta[itemprop=datePublished]", func(e *colly.HTMLElement) {
 		var releaseDate time.Time
 		releaseDate, err = time.Parse(timeFormatLookup, e.Attr("content"))
-		result.ReleaseDate = releaseDate
+		if err == nil {
+			result.ReleaseDate = &releaseDate
+		}
 	})
 
 	c.OnHTML(".trackView", func(e *colly.HTMLElement) {

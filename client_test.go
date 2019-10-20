@@ -14,7 +14,7 @@ var (
 		ReleaseDate: &expectedAlbumReleaseDate,
 	}
 
-	expectedTrackReleaseDate = time.Date(2019, time.November, 1, 0, 0, 0, 0, time.UTC)
+	expectedTrackReleaseDate = time.Date(2019, time.November, 8, 0, 0, 0, 0, time.UTC)
 	expectedTrack            = Media{
 		Type:        MediaTypeTrack,
 		Title:       "Infinite",
